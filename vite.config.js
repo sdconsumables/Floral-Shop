@@ -3,10 +3,13 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/Floral-Shop/",  
+
   server: {
-    host: true,     // 👈 IMPORTANT
-    port: 5173
+    host: true,
+    port: 5173,
   },
+
   plugins: [
     react({
       babel: {
