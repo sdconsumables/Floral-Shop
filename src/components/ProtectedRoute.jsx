@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }) {
       try {
         const res = await fetch(`${BASEURL}Admin-Dashboard`, {
           method: "GET",
-          credentials: "include", // 🔥 REQUIRED
+          credentials: "include", 
         });
 
         setIsAuth(res.ok);
