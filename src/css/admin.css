@@ -65,14 +65,14 @@
   background: #d87b89;
 }
 
-.loading-bar {
+/* .loading-bar {
   width: 100%;
   height: 4px;
   background: linear-gradient(90deg, #ff6b6b, #ffb347);
   animation: loading 1s infinite linear;
   margin-bottom: 15px;
   border-radius: 4px;
-}
+} */
 
 @keyframes loading {
   0% { transform: translateX(-100%); }

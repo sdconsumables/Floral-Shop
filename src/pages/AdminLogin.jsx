@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/admin.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { HashLoader } from "react-spinners";
 
 const BASEURL = import.meta.env.VITE_BASE_URL;
 
@@ -38,7 +39,7 @@ export default function AdminLogin() {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include", // 🔥 VERY IMPORTANT
+      credentials: "include", 
       body: JSON.stringify({ email, password }),
     });
 
@@ -61,6 +62,11 @@ export default function AdminLogin() {
 
   return (
     <>
+    {loading && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+          <HashLoader color="#22c55e" size={60} />
+        </div>
+      )} 
     <Navbar scrolled={scrolled} />
     <div className="admin-login-container">
       <div className="login-card">
