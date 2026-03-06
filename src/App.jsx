@@ -95,14 +95,20 @@ import Features from "./components/Features";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 
-import AdminLogin from "./pages/AdminLogin.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
+import AdminLogin from "./pages/Admin/AdminLogin.jsx";
+import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import ManageFlowers from "./components/ManageFlowers.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute";
-import AdminLayout from "./pages/AdminLayout";
+import AdminLayout from "./pages/Admin/AdminLayout";
 
 import { useEffect, useState } from "react";
+import UserLogin from "./pages/User/UserLogin.jsx";
+import UserRegister from "./pages/User/UserRegister.jsx";
+import UserDashboard from "./pages/User/UserDashboard.jsx";
+import ProtectedUserRoute from "./components/ProtectedUserRoute.jsx";
+import UserLayout from "./pages/User/UserLayout.jsx";
+import UserForgotPassword from "./pages/User/ForgotPassword.jsx";
 
 
 // ---------------- HOME LAYOUT ----------------
@@ -151,6 +157,29 @@ function App() {
 
           {/* WEBSITE */}
           <Route path="/" element={<HomeLayout />} />
+
+          {/* User LOGIN */}
+          <Route path="/user/login" element={<UserLogin />} />
+
+          {/* User Register */}
+          <Route path="/user/register" element={<UserRegister />} />
+
+          {/* User Forgot Password */}
+          <Route path="/user/forgot-password" element={<UserForgotPassword />} />
+
+          {/* User Panel */}
+          <Route
+              path="/user/*"
+              element={
+                <ProtectedUserRoute>
+                  <UserLayout />
+                </ProtectedUserRoute>
+              }
+            >
+              <Route path="dashboard" element={<UserDashboard />} />
+            </Route>
+
+
 
           {/* ADMIN LOGIN */}
           <Route path="/admin" element={<AdminLogin />} />

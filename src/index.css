@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* Notiflix Confirm Popup */
+.notiflix-confirm .notiflix-confirm-content {
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* Notiflix Report Popup */
+.notiflix-report .notiflix-report-content {
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+}
+
+/* Optional: improve buttons */
+.notiflix-confirm-buttons a {
+  border-radius: 8px !important;
+  font-size: 13px !important;
+}
+
 @layer utilities {
   .animate-in {
     animation-fill-mode: both;

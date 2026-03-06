@@ -15,12 +15,14 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
     "lucide-react": "^0.546.0",
+    "notiflix": "^3.2.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.13.1",
     "react-spinners": "^0.17.0",
     "react-syntax-highlighter": "^15.6.6",
+    "sweetalert": "^2.1.2",
     "sweetalert2": "^11.26.20",
     "tailwindcss": "^4.1.16"
   },

@@ -116,8 +116,8 @@ import { HashLoader } from "react-spinners";
 import { useState } from "react";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { Menu } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 export default function AdminLayout() {
   const navigate = useNavigate();

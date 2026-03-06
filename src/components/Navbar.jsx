@@ -138,10 +138,10 @@ export default function Navbar({ scrolled }) {
               Pricing
             </Link>
             <Link
-              to="/testimonials"
+              to="/user/login"
               className="text-gray-300 hover:text-white text-sm lg:text-base"
             >
-              Testimonials
+              Login
             </Link>
           </div>
 
@@ -162,11 +162,11 @@ export default function Navbar({ scrolled }) {
         <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
           <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
             <Link
-              to="/features"
+              to="/"
               onClick={() => setMobileMenuIsOpen(false)}
               className="block text-gray-300 hover:text-white text-sm lg:text-base"
             >
-              Features
+              Home
             </Link>
             <Link
               to="/pricing"
@@ -176,11 +176,11 @@ export default function Navbar({ scrolled }) {
               Pricing
             </Link>
             <Link
-              to="/testimonials"
+              to="/user/login"
               onClick={() => setMobileMenuIsOpen(false)}
               className="block text-gray-300 hover:text-white text-sm lg:text-base"
             >
-              Testimonials
+              Login
             </Link>
           </div>
         </div>
