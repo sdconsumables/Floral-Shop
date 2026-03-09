@@ -1,17 +1,55 @@
+// const BASEURL = import.meta.env.VITE_BASE_URL;
+
+// import { HashLoader } from "react-spinners";
 // import { useState } from "react";
 // import { Outlet, useNavigate, NavLink } from "react-router-dom";
 // import { Menu } from "lucide-react";
-// import Navbar from "../components/Navbar";
-// import Footer from "../components/Footer";
+// import Notiflix from "notiflix";
+// import setupNotiflix from "../../utils/notiflixConfig";
+// import Navbar from "../../components/Navbar";
+// import Footer from "../../components/Footer";
 
 // export default function AdminLayout() {
+//   setupNotiflix();
 //   const navigate = useNavigate();
 //   const [open, setOpen] = useState(false);
+//   const [loading, setLoading] = useState(false);
+  
 
-//   const handleLogout = () => {
-//     localStorage.removeItem("token");
-//     navigate("/");
-//   };
+// const handleLogout = async () => {
+//   Notiflix.Confirm.show(
+//     "Logout",
+//     "You will be logged out",
+//     "Logout",
+//     "Cancel",
+
+//     async function okCb() {
+//       try {
+//         setLoading(true);
+
+//         await fetch(`${BASEURL}Admin-Logout`, {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           credentials: "include",
+//         });
+
+//         localStorage.removeItem("user");
+//         navigate("/admin", { replace: true });
+
+//       } catch (err) {
+//         console.error("Logout failed", err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     },
+
+//     function cancelCb() {
+//       // user cancelled — do nothing
+//     }
+//   );
+// };
 
 //   const linkClasses = ({ isActive }) =>
 //     `p-2 rounded-lg transition-all duration-200 ${
@@ -22,7 +60,16 @@
 
 //   return (
 //     <>
+
+//       {loading && (
+//         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+//           <HashLoader color="#22c55e" size={60} />
+//         </div>
+//       )}
+
 //       <Navbar />
+
+      
 
 //       <div className="min-h-screen bg-slate-950 text-white flex flex-col pt-16">
 //         <div className="flex flex-1 relative">
@@ -69,7 +116,7 @@
 
 //                 <button
 //                   onClick={handleLogout}
-//                   className="mt-4 bg-red-500 hover:bg-red-600 py-2 rounded-lg text-center font-semibold transition"
+//                   className="mt-4 bg-red-500 hover:bg-red-600 py-2 rounded-lg text-center font-semibold transition cursor-pointer"
 //                 >
 //                   Logout
 //                 </button>
@@ -110,41 +157,61 @@
 //   );
 // }
 
+
 const BASEURL = import.meta.env.VITE_BASE_URL;
 
 import { HashLoader } from "react-spinners";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useNavigate, NavLink } from "react-router-dom";
 import { Menu } from "lucide-react";
+import Notiflix from "notiflix";
+import setupNotiflix from "../../utils/notiflixConfig";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  
 
-const handleLogout = async () => {
-  try {
-    setLoading(true);
+  useEffect(() => {
+    setupNotiflix();
+  }, []);
 
-    await fetch(`${BASEURL}Admin-Logout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  const handleLogout = async () => {
+    Notiflix.Confirm.show(
+      "Logout",
+      "You will be logged out",
+      "Logout",
+      "Cancel",
+
+      async function okCb() {
+        try {
+          setLoading(true);
+
+          await fetch(`${BASEURL}Admin-Logout`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          });
+
+          localStorage.removeItem("user");
+          navigate("/admin", { replace: true });
+
+        } catch (err) {
+          console.error("Logout failed", err);
+        } finally {
+          setLoading(false);
+        }
       },
-      credentials: "include",
-    });
 
-    navigate("/admin", { replace: true });
+      function cancelCb() {}
+    );
+  };
 
-  } catch (err) {
-    console.error("Logout failed", err);
-  } finally {
-    setLoading(false);
-  }
-};
   const linkClasses = ({ isActive }) =>
     `p-2 rounded-lg transition-all duration-200 ${
       isActive
@@ -154,28 +221,29 @@ const handleLogout = async () => {
 
   return (
     <>
-
+      {/* Loader */}
       {loading && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
           <HashLoader color="#22c55e" size={60} />
         </div>
       )}
 
+      {/* Navbar */}
       <Navbar />
 
-      
+      {/* Main Layout */}
+      <div className="min-h-screen bg-slate-950 text-white flex flex-col pt-20">
 
-      <div className="min-h-screen bg-slate-950 text-white flex flex-col pt-16">
         <div className="flex flex-1 relative">
-          
+
           {/* Sidebar */}
           <div
             className={`
               bg-slate-900 p-6 flex flex-col
               transform transition-transform duration-300 z-40
-              w-64 min-h-[calc(100vh-4rem)]
-              fixed top-16 left-0
-              md:sticky md:top-16 md:translate-x-0
+              w-64 min-h-[calc(100vh-5rem)]
+              fixed top-20 left-0
+              md:sticky md:top-20 md:translate-x-0
               ${open ? "translate-x-0" : "-translate-x-full"}
             `}
           >
@@ -183,7 +251,7 @@ const handleLogout = async () => {
               <h1 className="text-2xl font-bold mb-8">🌸 Admin</h1>
 
               <nav className="flex flex-col gap-4">
-                
+
                 <NavLink
                   to="/admin/dashboard"
                   onClick={() => setOpen(false)}
@@ -210,7 +278,7 @@ const handleLogout = async () => {
 
                 <button
                   onClick={handleLogout}
-                  className="mt-4 bg-red-500 hover:bg-red-600 py-2 rounded-lg text-center font-semibold transition"
+                  className="mt-4 bg-red-500 hover:bg-red-600 py-2 rounded-lg text-center font-semibold transition cursor-pointer"
                 >
                   Logout
                 </button>
@@ -219,17 +287,17 @@ const handleLogout = async () => {
             </div>
           </div>
 
-          {/* Overlay for mobile */}
+          {/* Mobile Overlay */}
           {open && (
             <div
-              className="fixed top-16 left-0 right-0 bottom-0 bg-black/50 md:hidden"
+              className="fixed top-20 left-0 right-0 bottom-0 bg-black/50 md:hidden"
               onClick={() => setOpen(false)}
             />
           )}
 
           {/* Content */}
-          <div className="flex-1 flex flex-col min-h-[calc(100vh-4rem)]">
-            
+          <div className="flex-1 flex flex-col min-h-[calc(100vh-5rem)]">
+
             {/* Mobile Topbar */}
             <div className="md:hidden flex items-center justify-between bg-slate-900 p-4">
               <button onClick={() => setOpen(true)}>
@@ -238,6 +306,7 @@ const handleLogout = async () => {
               <h2 className="font-semibold">Admin Panel</h2>
             </div>
 
+            {/* Page Content */}
             <div className="p-6 flex-1">
               <Outlet />
             </div>
@@ -245,7 +314,9 @@ const handleLogout = async () => {
           </div>
         </div>
 
+        {/* Footer */}
         <Footer />
+
       </div>
     </>
   );

@@ -97,7 +97,7 @@ import { Toaster } from "react-hot-toast";
 
 import AdminLogin from "./pages/Admin/AdminLogin.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
-import ManageFlowers from "./components/ManageFlowers.jsx";
+import ManageFlowers from "./components/Admin-Components/ManageFlowers.jsx";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLayout from "./pages/Admin/AdminLayout";
@@ -109,6 +109,7 @@ import UserDashboard from "./pages/User/UserDashboard.jsx";
 import ProtectedUserRoute from "./components/ProtectedUserRoute.jsx";
 import UserLayout from "./pages/User/UserLayout.jsx";
 import UserForgotPassword from "./pages/User/ForgotPassword.jsx";
+import Collections from "./components/Collections.jsx";
 
 
 // ---------------- HOME LAYOUT ----------------
@@ -128,7 +129,7 @@ function HomeLayout() {
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
       <Navbar scrolled={scrolled} />
       <Hero />
-      <Features />
+      {/* <Features /> */}
       <Footer />
     </div>
   );
@@ -157,6 +158,9 @@ function App() {
 
           {/* WEBSITE */}
           <Route path="/" element={<HomeLayout />} />
+
+          {/* Collections */}
+          <Route path="/collections" element={<Collections/>} />
 
           {/* User LOGIN */}
           <Route path="/user/login" element={<UserLogin />} />

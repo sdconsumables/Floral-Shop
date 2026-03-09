@@ -1,8 +1,23 @@
 // import { Menu, X } from "lucide-react";
 // import { useState } from "react";
+// import { NavLink } from "react-router-dom";
 
 // export default function Navbar({ scrolled }) {
 //   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+//   const desktopLinkClass = ({ isActive }) =>
+//     `text-sm lg:text-base ${
+//       isActive
+//         ? "text-green-400"
+//         : "text-gray-300 hover:text-green-400"
+//     }`;
+
+//   const mobileLinkClass = ({ isActive }) =>
+//     `block text-sm ${
+//       isActive
+//         ? "text-green-400"
+//         : "text-gray-300 hover:text-green-400"
+//     }`;
 
 //   return (
 //     <nav
@@ -14,44 +29,38 @@
 //     >
 //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
+          
 //           <div className="flex items-center space-x-1 group cursor-pointer">
 //             <div>
 //               <img
-//                 src="/logo.png"
+//                 src="./logo.png"
 //                 alt="CodeFlow"
 //                 className="w-6 h-6 sm:w-8 sm:h-8"
 //               />
 //             </div>
 //             <span className="text-lg sm:text-xl md:text-2xl font-medium">
-//               {/* <span className="text-white"></span> */}
 //               <span className="text-blue-400">Florals</span>
 //             </span>
 //           </div>
 
-//           {/* Nav Links */}
+//           {/* Desktop Nav Links */}
 //           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-//             <a
-//               href="#"
-//               className="text-gray-300 hover:text-white text-sm lg:text-base"
-//             >
+//             <NavLink to="/" className={desktopLinkClass}>
 //               Home
-//             </a>
-//             <a
-//               href="#pricing"
-//               className="text-gray-300 hover:text-white text-sm lg:text-base"
-//             >
-//               Pricing
-//             </a>
-//             <a
-//               href="#testimonials"
-//               className="text-gray-300 hover:text-white text-sm lg:text-base"
-//             >
-//               Testimonials
-//             </a>
+//             </NavLink>
+
+//             <NavLink to="/collections" className={desktopLinkClass}>
+//               Our Collections
+//             </NavLink>
+
+//             <NavLink to="/user/login" className={desktopLinkClass}>
+//               Login
+//             </NavLink>
 //           </div>
 
+//           {/* Mobile Menu Button */}
 //           <button
-//             className="md:hidden p-2 text-gray-300 hover:text-white"
+//             className="md:hidden p-2 text-gray-300 hover:text-green-400"
 //             onClick={() => setMobileMenuIsOpen((prev) => !prev)}
 //           >
 //             {mobileMenuIsOpen ? (
@@ -63,30 +72,35 @@
 //         </div>
 //       </div>
 
+//       {/* Mobile Menu */}
 //       {mobileMenuIsOpen && (
 //         <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
 //           <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
-//             <a
-//               href="#features"
+
+//             <NavLink
+//               to="/"
 //               onClick={() => setMobileMenuIsOpen(false)}
-//               className="block text-gray-300 hover:text-white text-sm lg:text-base"
+//               className={mobileLinkClass}
 //             >
-//               Features
-//             </a>
-//             <a
-//               href="#pricing"
+//               Home
+//             </NavLink>
+
+//             <NavLink
+//               to="/collections"
 //               onClick={() => setMobileMenuIsOpen(false)}
-//               className="block text-gray-300 hover:text-white text-sm lg:text-base"
+//               className={mobileLinkClass}
 //             >
-//               Pricing
-//             </a>
-//             <a
-//               href="#testimonials"
+//               Our Collections
+//             </NavLink>
+
+//             <NavLink
+//               to="/user/login"
 //               onClick={() => setMobileMenuIsOpen(false)}
-//               className="block text-gray-300 hover:text-white text-sm lg:text-base"
+//               className={mobileLinkClass}
 //             >
-//               Testimonials
-//             </a>
+//               Login
+//             </NavLink>
+
 //           </div>
 //         </div>
 //       )}
@@ -96,10 +110,28 @@
 
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar({ scrolled }) {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+
+  const user = localStorage.getItem("user");
+
+  const role= user ? JSON.parse(user).role : null;
+
+  const desktopLinkClass = ({ isActive }) =>
+    `text-sm lg:text-base ${
+      isActive
+        ? "text-green-400"
+        : "text-gray-300 hover:text-green-400"
+    }`;
+
+  const mobileLinkClass = ({ isActive }) =>
+    `block text-sm ${
+      isActive
+        ? "text-green-400"
+        : "text-gray-300 hover:text-green-400"
+    }`;
 
   return (
     <nav
@@ -111,9 +143,11 @@ export default function Navbar({ scrolled }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 md:h-20">
+          
           <div className="flex items-center space-x-1 group cursor-pointer">
             <div>
-              <img src="./logo.png"
+              <img
+                src="./logo.png"
                 alt="CodeFlow"
                 className="w-6 h-6 sm:w-8 sm:h-8"
               />
@@ -123,30 +157,33 @@ export default function Navbar({ scrolled }) {
             </span>
           </div>
 
-          {/* Nav Links */}
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <Link
-              to="/"
-              className="text-gray-300 hover:text-white text-sm lg:text-base"
-            >
+            <NavLink to="/" className={desktopLinkClass}>
               Home
-            </Link>
-            <Link
-              to="/pricing"
-              className="text-gray-300 hover:text-white text-sm lg:text-base"
-            >
-              Pricing
-            </Link>
-            <Link
-              to="/user/login"
-              className="text-gray-300 hover:text-white text-sm lg:text-base"
-            >
-              Login
-            </Link>
+            </NavLink>
+
+            <NavLink to="/collections" className={desktopLinkClass}>
+              Our Collections
+            </NavLink>
+
+            {role ? (
+              <NavLink
+                to={role === "admin" ? "/admin/dashboard" : "/user/dashboard"}
+                className={desktopLinkClass}
+              >
+                Dashboard
+              </NavLink>
+            ) : (
+              <NavLink to="/user/login" className={desktopLinkClass}>
+                Login
+              </NavLink>
+            )}
           </div>
 
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-300 hover:text-white"
+            className="md:hidden p-2 text-gray-300 hover:text-green-400"
             onClick={() => setMobileMenuIsOpen((prev) => !prev)}
           >
             {mobileMenuIsOpen ? (
@@ -158,30 +195,45 @@ export default function Navbar({ scrolled }) {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuIsOpen && (
         <div className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 animate-in slide-in-from-top duration-300">
           <div className="px-4 py-4 sm:py-6 space-y-3 sm:space-y-4">
-            <Link
+
+            <NavLink
               to="/"
               onClick={() => setMobileMenuIsOpen(false)}
-              className="block text-gray-300 hover:text-white text-sm lg:text-base"
+              className={mobileLinkClass}
             >
               Home
-            </Link>
-            <Link
-              to="/pricing"
+            </NavLink>
+
+            <NavLink
+              to="/collections"
               onClick={() => setMobileMenuIsOpen(false)}
-              className="block text-gray-300 hover:text-white text-sm lg:text-base"
+              className={mobileLinkClass}
             >
-              Pricing
-            </Link>
-            <Link
-              to="/user/login"
-              onClick={() => setMobileMenuIsOpen(false)}
-              className="block text-gray-300 hover:text-white text-sm lg:text-base"
-            >
-              Login
-            </Link>
+              Our Collections
+            </NavLink>
+
+            {role ? (
+              <NavLink
+                to={role === "admin" ? "/admin/dashboard" : "/user/dashboard"}
+                onClick={() => setMobileMenuIsOpen(false)}
+                className={mobileLinkClass}
+              >
+                Dashboard
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/user/login"
+                onClick={() => setMobileMenuIsOpen(false)}
+                className={mobileLinkClass}
+              >
+                Login
+              </NavLink>
+            )}
+
           </div>
         </div>
       )}

@@ -47,7 +47,7 @@ export default function AdminLogin() {
     setLoading(false);
 
     if (res.ok) {
-      // ✅ No localStorage needed anymore
+      localStorage.setItem("user", JSON.stringify({ role: "admin", email: email, username: data.username }));
       navigate("/admin/dashboard", { replace: true });
     } else {
       alert(data.message || "Login Failed");

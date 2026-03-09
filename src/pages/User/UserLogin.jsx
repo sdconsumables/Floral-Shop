@@ -53,7 +53,7 @@ export default function UserLogin() {
 
       const data = await res.json();
 
-      localStorage.setItem("user", JSON.stringify({ email, username: data.username }));
+      localStorage.setItem("user", JSON.stringify({ role: "user", email: email, username: data.username }));
 
       // console.log("Data response status:", data);
 
