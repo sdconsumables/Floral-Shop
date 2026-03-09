@@ -139,7 +139,7 @@ export default function UserLogin() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="mt-3 bg-green-500 hover:bg-green-600 transition py-3 rounded-lg font-semibold"
+                  className="mt-3 bg-green-500 hover:bg-green-600 transition py-3 rounded-lg font-semibold cursor-pointer"
                 >
                   {loading ? "Checking..." : "Login"}
                 </button>

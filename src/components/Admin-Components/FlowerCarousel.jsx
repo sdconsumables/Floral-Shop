@@ -14,7 +14,7 @@ function FlowerCarousel({ flowers, onEdit, onDelete }) {
             {/* Triangle Background */}
             <div
               className={`absolute top-0 right-0 w-0 h-0 
-              border-t-[90px] border-l-[90px] border-l-transparent
+              border-t-90px border-l-90px border-l-transparent
               ${
                 flower.isAvailable
                   ? "border-t-green-500"

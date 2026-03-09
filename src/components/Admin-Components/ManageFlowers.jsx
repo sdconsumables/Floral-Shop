@@ -232,7 +232,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { HashLoader } from "react-spinners";
 import AddForm from "./addForm";
-import FlowerCarousel from "../FlowerCarousel";
+import FlowerCarousel from "./FlowerCarousel";
 
 const BASEURL = import.meta.env.VITE_BASE_URL;
 
