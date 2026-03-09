@@ -91,7 +91,6 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Features from "./components/Features";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
 
@@ -99,7 +98,7 @@ import AdminLogin from "./pages/Admin/AdminLogin.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 import ManageFlowers from "./components/Admin-Components/ManageFlowers.jsx";
 
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute"; 
 import AdminLayout from "./pages/Admin/AdminLayout";
 
 import { useEffect, useState } from "react";

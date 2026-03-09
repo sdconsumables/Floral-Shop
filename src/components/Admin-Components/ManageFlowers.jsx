@@ -380,6 +380,13 @@ function ManageFlowers() {
   return (
     <div className="p-6 text-white relative">
 
+      {/* GLOBAL LOADER */}
+      {/* {loading && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+          <HashLoader color="#22c55e" size={60} />
+        </div>
+      )} */}
+
       {/* HEADER */}
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Manage Flowers</h2>
