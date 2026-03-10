@@ -396,7 +396,7 @@ function ManageFlowers() {
             setEditingFlower(null);
             setShowForm(true);
           }}
-          className="bg-green-500 px-4 py-2 rounded hover:bg-green-600"
+          className="bg-green-500 px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
         >
           Add Flower
         </button>
@@ -432,7 +432,7 @@ function ManageFlowers() {
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(currentPage - 1)}
-          className="bg-slate-700 px-4 py-2 rounded disabled:opacity-40 hover:bg-slate-600"
+          className="bg-slate-700 px-4 py-2 rounded disabled:opacity-40 hover:bg-slate-600 cursor-pointer"
         >
           Prev
         </button>
@@ -444,7 +444,7 @@ function ManageFlowers() {
         <button
           disabled={currentPage === totalPages || totalPages === 0}
           onClick={() => setCurrentPage(currentPage + 1)}
-          className="bg-slate-700 px-4 py-2 rounded disabled:opacity-40 hover:bg-slate-600"
+          className="bg-slate-700 px-4 py-2 rounded disabled:opacity-40 hover:bg-slate-600 cursor-pointer"
         >
           Next
         </button>

@@ -12,7 +12,7 @@ export default function Flowers() {
 
   const fetchFlowers = async () => {
     try {
-      const res = await fetch(`${BASEURL}flowers`);
+      const res = await fetch(`${BASEURL}Flowers`);
       const data = await res.json();
       setFlowers(data);
       setLoading(false);

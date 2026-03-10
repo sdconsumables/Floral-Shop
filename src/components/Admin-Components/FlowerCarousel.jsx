@@ -14,7 +14,7 @@ function FlowerCarousel({ flowers, onEdit, onDelete }) {
             {/* Triangle Background */}
             <div
               className={`absolute top-0 right-0 w-0 h-0 
-              border-t-90px border-l-90px border-l-transparent
+              border-t-[90px] border-l-[90px] border-l-transparent
               ${
                 flower.isAvailable
                   ? "border-t-green-500"
@@ -54,14 +54,14 @@ function FlowerCarousel({ flowers, onEdit, onDelete }) {
           <div className="flex gap-2 mt-3">
             <button
               onClick={() => onEdit(flower)}
-              className="bg-blue-500 px-3 py-1 rounded hover:bg-blue-600"
+              className="bg-blue-500 px-3 py-1 rounded hover:bg-blue-600 cursor-pointer"
             >
               Edit
             </button>
 
             <button
               onClick={() => onDelete(flower._id)}
-              className="bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+              className="bg-red-500 px-3 py-1 rounded hover:bg-red-600 cursor-pointer"
             >
               Delete
             </button>
